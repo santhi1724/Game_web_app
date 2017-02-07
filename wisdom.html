@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-2.2.4.min.js"></script>
+	<style type="text/css">
+		body{
+			 background: url('background.png')no-repeat center center fixed ;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;	
+
+
+		}
+		#gun{
+			position: absolute;
+			top: 480px;
+			left: 385px;
+			
+			-webkit-filter: opacity(.8);
+			filter: opacity(.8);
+		}
+		#tool{
+			position: absolute;
+			top: 480px;
+			left: 790px;
+			
+			-webkit-filter: opacity(.6);
+			filter: opacity(.6);
+
+		}
+		#cloth{
+			position: absolute;
+			top: 550px;
+			left: 990px;
+			
+			-webkit-filter: opacity(0.4);
+			filter: opacity(0.4);
+
+		}
+		#knife{
+			position: absolute;
+			top: 235px;
+			left: 440px;
+			
+			-webkit-filter: opacity(0.4);
+			filter: opacity(0.4);
+
+		}
+		#time{
+				position: absolute;
+				top: 661px;
+				left: 60px;
+				font-size: 35pt;
+				color: white;
+
+			}
+		
+		#second_gold{
+			position: absolute;
+			top: 540px;
+			left: 482px;
+		}
+		#third_gold{
+			position: absolute;
+			top: 540px;
+			left: 535px;
+		}
+		#heart1{
+			position: absolute;
+			top: 249px;
+			left: 270px;
+		}
+		#heart2{
+			position: absolute;
+			top: 339px;
+			left: 270px;
+		}
+		#heart3{
+			position: absolute;
+			top: 419px;
+			left: 270px;
+		}
+		#heart4{
+			position: absolute;
+			top: 516px;
+			left: 270px;
+		}
+		#hint1{
+			position: absolute;
+			top: 150px;
+			left: 100px;
+		}
+		#hint2{
+			position: absolute;
+			top: 150px;
+			left: 150px;
+		}
+		#hint3{
+			position: absolute;
+			top: 150px;
+			left: 200px;
+		}
+		#gif{
+			position: absolute;
+			top: 560px;
+			left: 70px;
+		}
+		#next{
+	    	position: absolute;
+	    	top: 580px;
+	    	left: 190px;
+	    }
+
+
+
+
+
+	</style>
+</head>
+<body>
+
+<img id="gun" src="caulk_gun.png" height="60" >
+<img id="tool" src="caulking_tool_butn.png" height="100">
+<img id="cloth" src="cleaning_butn.png" height="55">
+<img id="knife" src="caulk_cord.png" height="60" width="55">
+
+<img id="second_gold" src="hint_g2.png" height="23">
+<img id="third_gold" src="hint_g2.png" height="23">
+<img id="heart1" src="heart_red_big.png" height="28">
+<img id="heart2" src="heart_red_big.png" height="28">
+<img id="heart3" src="heart_red_big.png" height="28">
+<img id="heart4" src="heart_red_big.png" height="28">
+<img id="hint1" src="hint_gold.png" height="23">
+<img id="hint2" src="hint_gold.png" height="23">
+<img id="hint3" src="hint_gold.png" height="23">
+<img id="gif" src="icemelting.gif" alt="loading" title="loading">
+<div id="timer"><span id="time">02:00</span></div>
+<a href="page9.html">
+<img id="next" src="play.png" height="70" width="70">
+</a>
+<audio id="audio" style="display:none;" src="A_Long_Cold.mp3">
+<script>
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 2,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+    var gun=0;
+	var tool=0;
+	var cloth=0;
+	var knife=0;
+	var hint1=0;
+	var hint2=0;
+	var hint3=0;
+$(document).ready(function ()  {
+	$("#heart1").hide();
+	$("#heart2").hide();
+	$("#heart3").hide();
+	$("#heart4").hide();
+	$("#hint3").hide();
+
+	
+	
+});
+$("#first_gold").on("click", function()
+{
+
+
+    if (hint1==0) {
+    	hint1=1;
+
+    	$("#hint1").show();
+    	$("#first_gold").hide();
+    }
+    else if (hint2==0) {
+    	hint2=1;
+    	$("#hint2").show();
+    	$("#first_gold").hide();
+
+    }
+    else if (hint3==0) {
+    	hint3=1;
+    	$("#hint3").show();
+    	$("#first_gold").hide();
+
+    }
+});
+$("#second_gold").on("click", function()
+{
+
+
+    if (hint1==0) {
+    	hint1=1;
+    	$("#hint1").show();
+    	$("#second_gold").hide();
+    }
+    else if (hint2==0) {
+    	hint2=1;
+    	$("#hint2").show();
+    	$("#second_gold").hide();
+
+    }
+    else if (hint3==0) {
+    	hint3=1;
+    	$("#hint3").show();
+    	$("#second_gold").hide();
+
+    }
+});
+$("#third_gold").on("click", function()
+{
+
+
+    if (hint1==0) {
+    	hint1=1;
+    	$("#hint1").show();
+    	$("#third_gold").hide();
+    }
+    else if (hint2==0) {
+    	hint2=1;
+    	$("#hint2").show();
+    	$("#third_gold").hide();
+
+    }
+    else if (hint3==0) {
+    	hint3=1;
+    	$("#hint3").show();
+    	$("#third_gold").hide();
+
+    }
+});
+
+$("#hint1").on("click",function(){
+	if (cloth==0) {
+		cloth=1;
+		$("#cloth").css({ height: 100});
+		hint1=0;
+		$("#hint1").hide();
+		return false;
+	}
+	else if (tool==0) {
+		tool=1;
+		$("#tool").css({height:200});
+		hint1=0;
+		$("#hint1").hide();
+
+		return false;
+
+	}
+	else if (gun==0) {
+		gun=1;
+		$("#gun").css({height:100});
+		hint1=0;
+		$("#hint1").hide();
+		return false;
+	}
+	else if (knife==0) {
+		knife=1;
+		$("#knife").css({height:100});
+		hint1=0;
+		$("#hint1").hide();
+		return false;
+	}
+	else{
+		alert("You dont require me");
+	}
+
+});
+
+$("#hint2").on("click",function(){
+	if (cloth==0) {
+		cloth=1;
+		$("#cloth").css({ height: 100});
+		hint1=0;
+		$("#hint2").hide();
+		return false;
+	}
+	else if (tool==0) {
+		tool=1;
+		$("#tool").css({height:200});
+		hint1=0;
+		$("#hint2").hide();
+
+		return false;
+
+	}
+	else if (gun==0) {
+		gun=1;
+		$("#gun").css({height:100});
+		hint1=0;
+		$("#hint2").hide();
+		return false;
+	}
+	else if (knife==0) {
+		knife=1;
+		$("#knife").css({height:100});
+		hint1=0;
+		$("#hint2").hide();
+		return false;
+	}
+	else{
+		alert("You dont require me");
+	}
+
+});
+
+$("#hint3").on("click",function(){
+	if (cloth==0) {
+		cloth=1;
+		$("#cloth").css({ height: 100});
+		hint1=0;
+		$("#hint3").hide();
+		return false;
+	}
+	else if (tool==0) {
+		tool=1;
+		$("#tool").css({height:200});
+		hint1=0;
+		$("#hint3").hide();
+
+		return false;
+
+	}
+	else if (gun==0) {
+		gun=1;
+		$("#gun").css({height:100});
+		hint1=0;
+		$("#hint3").hide();
+		return false;
+	}
+	else if (knife==0) {
+		knife=1;
+		$("#knife").css({height:100});
+		hint1=0;
+		$("#hint3").hide();
+		return false;
+	}
+	else{
+		alert("You dont require me");
+	}
+
+});
+
+
+$("#gun").on("click", function()
+{
+
+    gun=1;
+    $("#heart3").show();
+    $("#gun").hide();
+});
+$("#tool").on("click", function()
+{
+	tool=1;
+  
+    $("#heart2").show();
+    $("#tool").hide();
+
+});
+$("#cloth").on("click", function()
+{
+	cloth=1;
+    
+    $("#heart1").show();
+    $("#cloth").hide();
+});
+$("#knife").on("click", function()
+{
+	knife=1;
+    
+    $("#heart4").show();
+    $("#knife").hide();
+});	
+</script>
+
+
+
+</body>
+</html>
